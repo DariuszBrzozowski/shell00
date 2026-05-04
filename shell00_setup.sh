@@ -40,3 +40,8 @@ cat ex03/id_rsa_pub
 mkdir -p ex04
 touch ex04/midLS
 echo "ls -tmp">ex04/midLS
+
+mkdir -p ex05
+touch ex05/git_commit.sh
+echo "git log -5 --format=%H" > ex05/git_commit.sh
+chmod +x ex05/git_commit.sh
