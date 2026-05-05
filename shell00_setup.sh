@@ -1,13 +1,18 @@
 #!/bin/sh
 set -e
+mkdir -p .archive
+
 mkdir -p ex00
 printf 'Z\n' > ex00/z
 
 mkdir -p ex01
+
 printf '' > ex01/testShell00
-truncate -size=40 ex01/testShell00
+truncate -s 40 ex01/testShell00
 chmod 455 ex01/testShell00
 touch -t 06012342 ex01/testShell00
+tar -cf ex01/testShell00.tar ex01/testShell00
+mv ex01/testShell00 .archive
 
 mkdir -p ex02
 mkdir -p ex02/test0 ex02/test2
@@ -30,9 +35,18 @@ touch -t 06012245 ex02/test2
 touch -t 06012344 ex02/test3 ex02/test5
 touch -t 06012343 ex02/test4
 touch -h -t 06012220 ex02/test6
+cd ex02
+tar -cf exo2.tar *
+cd ..
 
-ssh-keygen -t rsa
-#/home/db/.ssh/id_rsa
+rm -rf ex02/test0
+rm -rf ex02/test1
+rm -rf ex02/test2
+rm -rf ex02/test3 ex02/test5
+rm -rf ex02/test4
+rm -rf ex02/test6
+
+ssh-keygen -t rsa -f /home/db/.ssh/id_rsa
 mkdir -p ex03
 mv /home/db/.ssh/id_rsa.pub ex03/id_rsa_pub
 cat ex03/id_rsa_pub
