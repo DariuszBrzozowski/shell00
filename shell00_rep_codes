@@ -1,0 +1,62 @@
+mkdir -p ex00
+cd ex00
+echo 'Z'>z
+cat z
+cd ..
+
+mkdir -p ex01
+cd ex01
+touch testShell00
+truncate -s 40 testShell00
+chmod 455 testShell00
+touch -t 202606012342 testShell00
+ls -l
+tar -cf testShell00.tar testShell00
+rm -f testShell00
+cd ..
+
+mkdir -p ex02/test{0,2}
+cd ex02
+touch test{1,3,4}
+ln test3 test5
+ln -s test0 test6
+truncate -s 4 test1
+truncate -s 1 test3
+truncate -s 2 test4
+
+chmod 715 test0
+chmod 714 test1
+chmod 504 test2
+chmod 404 test3
+chmod 641 test4
+
+touch -t 06012047 test0
+touch -t 06012146 test1
+touch -t 06012245 test2
+touch -t 06012344 test3
+touch -t 06012343 test4
+touch -h -t 06012344 test6
+
+tar -cf exo2.tar *
+rm -rf test{0..6}
+cd ..
+
+mkdir -p ex03
+cd ex03
+ssh-keygen
+mv /home/db/.ssh/id_rsa.pub id_rsa_pub
+cat id_rsa_pub
+cd ..
+
+
+mkdir -p ex04
+cd ex04
+touch midLS
+echo "ls -tmp">midLS
+cd ..
+
+mkdir -p ex05
+cd ex05
+touch git_commit.sh
+chmod +x git_commit.sh
+echo "git log -n 5 --format=%H">git_commit.sh
