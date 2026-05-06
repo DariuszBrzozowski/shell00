@@ -47,7 +47,7 @@ rm -rf ex02/test3 ex02/test5
 rm -rf ex02/test4
 rm -rf ex02/test6
 
-ssh-keygen -t rsa -f /home/db/.ssh/id_rsa
+ssh-keygen
 mkdir -p ex03
 mv /home/db/.ssh/id_rsa.pub ex03/id_rsa_pub
 cat ex03/id_rsa_pub
