@@ -3,7 +3,7 @@ set -e
 mkdir -p .archive
 
 mkdir -p ex00
-printf 'Z\n' > ex00/z
+echo 'Z' > ex00/z
 
 mkdir -p ex01
 
