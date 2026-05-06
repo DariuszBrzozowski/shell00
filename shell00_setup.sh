@@ -14,15 +14,16 @@ touch -t 06012342 ex01/testShell00
 tar -cf ex01/testShell00.tar ex01/testShell00
 mv ex01/testShell00 .archive
 
-mkdir -p ex02
-mkdir -p ex02/test0 ex02/test2
+mkdir -p ex02/test{0,2}
+touch ex02/test{1,3,4}
+ln ex02/test3 ex02/test5
+ln -s test0 ex02/test6
 
-printf '1234' > ex02/test1
-printf 'a' > ex02/test3
-ln -f ex02/test3 ex02/test5
-printf 'ab' > ex02/test4
-ln -sfn test0 ex02/test6
+truncate -s 4 ex02/test1
+truncate -s 1 ex02/test3
+truncate -s 2 ex02/test4
 
+#change mod ugo (rwx)
 chmod 715 ex02/test0
 chmod 714 ex02/test1
 chmod 504 ex02/test2
